@@ -1,6 +1,6 @@
 {
-    "name": "tailwind-crayons",
-    "displayName": "Tailwind Crayon",
+    "name": "tailwind-pastel",
+    "displayName": "Tailwind Pastel",
     "description": "Highlights Tailwind utility classes by category with distinct colors for visual scanning",
     "version": "0.0.1",
     "publisher": "alkemic-studio",
@@ -8,12 +8,12 @@
     "icon": "icon.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/alkemic-studio/tailwind-crayons.git"
+        "url": "https://github.com/juncha9/tailwind-pastel.git"
     },
     "bugs": {
-        "url": "https://github.com/alkemic-studio/tailwind-crayons/issues"
+        "url": "https://github.com/juncha9/tailwind-pastel/issues"
     },
-    "homepage": "https://github.com/alkemic-studio/tailwind-crayons#readme",
+    "homepage": "https://github.com/juncha9/tailwind-pastel#readme",
     "galleryBanner": {
         "color": "#1e293b",
         "theme": "dark"
@@ -44,9 +44,9 @@
     "main": "./dist/extension.js",
     "contributes": {
         "configuration": {
-            "title": "Tailwind Crayon",
+            "title": "Tailwind Pastel",
             "properties": {
-                "tailwindCrayon.enabled": {
+                "tailwindPastel.enabled": {
                     "type": "boolean",
                     "default": true,
                     "description": "Enable Tailwind class category highlighting"
@@ -55,14 +55,14 @@
         },
         "commands": [
             {
-                "command": "tailwindCrayon.toggle",
+                "command": "tailwindPastel.toggle",
                 "title": "Toggle Highlighting",
-                "category": "Tailwind Crayon"
+                "category": "Tailwind Pastel"
             },
             {
-                "command": "tailwindCrayon.inspectAtCursor",
+                "command": "tailwindPastel.inspectAtCursor",
                 "title": "Inspect Class at Cursor",
-                "category": "Tailwind Crayon"
+                "category": "Tailwind Pastel"
             }
         ]
     },

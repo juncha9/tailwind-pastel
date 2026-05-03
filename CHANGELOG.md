@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **Tailwind Crayon** are documented in this file.
+All notable changes to **Tailwind Pastel** are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -20,14 +20,14 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Class string detection from:
     - Attributes: `class`, `className`, `ngClass`, `class:list`, plus their `[bracket]` Angular forms.
     - Helpers: `clsx`, `cn`, `cx`, `cva`, `tw`, `twMerge`, `twJoin`, `classNames`, `classnames` — including namespaced (`lib.cn(...)`) and tagged template (`` cn`...` ``) calls.
-- Setting `tailwindCrayon.enabled` (boolean, default `true`).
+- Setting `tailwindPastel.enabled` (boolean, default `true`).
 - Commands:
-    - `Tailwind Crayon: Toggle Highlighting` — flip the enabled setting (workspace target if defined, otherwise global).
-    - `Tailwind Crayon: Inspect Class at Cursor` — show the category of the token under the cursor in the status bar.
+    - `Tailwind Pastel: Toggle Highlighting` — flip the enabled setting (workspace target if defined, otherwise global).
+    - `Tailwind Pastel: Inspect Class at Cursor` — show the category of the token under the cursor in the status bar.
 - Supported languages: TypeScript React, JavaScript React, HTML, Vue, Svelte, Astro.
 - Performance:
     - Debounced re-highlighting (150ms) on document changes.
     - Document-level token cache keyed by `TextDocument.version`.
     - Windowed incremental rescan for single-line edits — only the affected ±5 lines are re-extracted, the rest of the cache is shifted by the change delta.
 
-[0.0.1]: https://github.com/alkemic-studio/tailwind-crayons/releases/tag/v0.0.1
+[0.0.1]: https://github.com/juncha9/tailwind-pastel/releases/tag/v0.0.1

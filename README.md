@@ -1,20 +1,20 @@
-# Tailwind Crayon
+# Tailwind Pastel
 
-[![VS Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/alkemic-studio.tailwind-crayons?color=007ACC&logo=visual-studio-code&label=marketplace)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayons)
-[![VS Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/alkemic-studio.tailwind-crayons?color=informational&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayons)
-[![VS Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/alkemic-studio.tailwind-crayons?color=orange&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayons&ssr=false#review-details)
-[![GitHub stars](https://img.shields.io/github/stars/juncha9/tailwind-crayons?color=f5d90a&logo=github)](https://github.com/juncha9/tailwind-crayons/stargazers)
-[![last commit](https://img.shields.io/github/last-commit/juncha9/tailwind-crayons?color=blueviolet&logo=github)](https://github.com/juncha9/tailwind-crayons/commits/main)
-[![license](https://img.shields.io/github/license/juncha9/tailwind-crayons?color=green)](./LICENSE.md)
+[![VS Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/alkemic-studio.tailwind-pastel?color=007ACC&logo=visual-studio-code&label=marketplace)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-pastel)
+[![VS Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/alkemic-studio.tailwind-pastel?color=informational&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-pastel)
+[![VS Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/alkemic-studio.tailwind-pastel?color=orange&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-pastel&ssr=false#review-details)
+[![GitHub stars](https://img.shields.io/github/stars/juncha9/tailwind-pastel?color=f5d90a&logo=github)](https://github.com/juncha9/tailwind-pastel/stargazers)
+[![last commit](https://img.shields.io/github/last-commit/juncha9/tailwind-pastel?color=blueviolet&logo=github)](https://github.com/juncha9/tailwind-pastel/commits/main)
+[![license](https://img.shields.io/github/license/juncha9/tailwind-pastel?color=green)](./LICENSE.md)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-ea4aaa?logo=github-sponsors)](https://github.com/sponsors/juncha9)
 
-![Usage](https://raw.githubusercontent.com/juncha9/tailwind-crayons/main/docs/imgs/main.png)
+![Usage](https://raw.githubusercontent.com/juncha9/tailwind-pastel/main/docs/imgs/main.png)
 
-Tailwind gives you the wall of utilities. Crayon helps you read it — every class tinted by category, so layout, box, surface, and typography sort themselves out before your eyes do.
+Tailwind gives you the wall of utilities. Pastel helps you read it — every class tinted by category, so layout, box, surface, and typography sort themselves out before your eyes do.
 
 So `flex items-center gap-4 px-3 py-2 bg-white rounded-lg shadow text-sm font-medium hover:bg-gray-50` stops reading like noise — each utility is painted in its category's hue, and your eyes group them automatically.
 
-![Usage](https://raw.githubusercontent.com/juncha9/tailwind-crayons/main/docs/imgs/example.png)
+![Usage](https://raw.githubusercontent.com/juncha9/tailwind-pastel/main/docs/imgs/example.png)
 
 ## Features
 
@@ -64,14 +64,14 @@ Templates with `${...}` interpolation are skipped to keep position mapping accur
 
 | Setting                     | Type      | Default | Description                  |
 | --------------------------- | --------- | ------- | ---------------------------- |
-| `tailwindCrayon.enabled`   | `boolean` | `true`  | Enable category highlighting |
+| `tailwindPastel.enabled`   | `boolean` | `true`  | Enable category highlighting |
 
 ## Commands
 
 | Command                                  | Description                                                                                           |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `Tailwind Crayon: Toggle Highlighting`  | Flip `tailwindCrayon.enabled` — writes to workspace settings if defined there, otherwise to global.   |
-| `Tailwind Crayon: Inspect Class at Cursor` | Shows the category of the token under the cursor in the status bar (debug helper).                 |
+| `Tailwind Pastel: Toggle Highlighting`  | Flip `tailwindPastel.enabled` — writes to workspace settings if defined there, otherwise to global.   |
+| `Tailwind Pastel: Inspect Class at Cursor` | Shows the category of the token under the cursor in the status bar (debug helper).                 |
 
 ## License
 

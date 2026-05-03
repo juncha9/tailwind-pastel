@@ -6,7 +6,7 @@ import { DecorationRegistry } from './decoration-registry';
 import { TokenStore } from './token-store';
 import { RefreshScheduler } from './refresh-scheduler';
 
-const CONFIG_NAMESPACE = 'tailwindCrayon';
+const CONFIG_NAMESPACE = 'tailwindPastel';
 
 function isEnabled(): boolean {
     return vscode.workspace.getConfiguration(CONFIG_NAMESPACE).get<boolean>('enabled', true);
@@ -112,7 +112,7 @@ export class HighlightManager implements vscode.Disposable {
             : vscode.ConfigurationTarget.Global;
         await cfg.update('enabled', !current, target);
         vscode.window.setStatusBarMessage(
-            `Tailwind Crayon: ${!current ? 'enabled' : 'disabled'}`,
+            `Tailwind Pastel: ${!current ? 'enabled' : 'disabled'}`,
             2000
         );
     }
@@ -127,12 +127,12 @@ export class HighlightManager implements vscode.Disposable {
         const tokens = extractClassTokens(editor.document.getText());
         const hit = tokens.find(t => t.start <= offset && offset <= t.end);
         if (hit == null) {
-            vscode.window.setStatusBarMessage('Tailwind Crayon: no token at cursor', 2000);
+            vscode.window.setStatusBarMessage('Tailwind Pastel: no token at cursor', 2000);
             return;
         }
         const label = CATEGORY_STYLE_MAP.get(hit.category)?.label ?? hit.category;
         vscode.window.setStatusBarMessage(
-            `Tailwind Crayon: "${hit.raw}" → ${label}`,
+            `Tailwind Pastel: "${hit.raw}" → ${label}`,
             3000
         );
     }

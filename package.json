@@ -1,0 +1,83 @@
+{
+    "name": "tailwind-crayon",
+    "displayName": "Tailwind Crayon",
+    "description": "Highlights Tailwind utility classes by category with distinct colors for visual scanning",
+    "version": "0.0.1",
+    "publisher": "alkemic-studio",
+    "license": "MIT",
+    "icon": "icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alkemic-studio/tailwind-crayon.git"
+    },
+    "bugs": {
+        "url": "https://github.com/alkemic-studio/tailwind-crayon/issues"
+    },
+    "homepage": "https://github.com/alkemic-studio/tailwind-crayon#readme",
+    "galleryBanner": {
+        "color": "#1e293b",
+        "theme": "dark"
+    },
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Visualization",
+        "Other"
+    ],
+    "keywords": [
+        "tailwind",
+        "tailwindcss",
+        "highlight",
+        "category",
+        "className"
+    ],
+    "activationEvents": [
+        "onLanguage:typescriptreact",
+        "onLanguage:javascriptreact",
+        "onLanguage:html",
+        "onLanguage:vue",
+        "onLanguage:svelte",
+        "onLanguage:astro"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "Tailwind Crayon",
+            "properties": {
+                "tailwindCrayon.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable Tailwind class category highlighting"
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "tailwindCrayon.toggle",
+                "title": "Toggle Highlighting",
+                "category": "Tailwind Crayon"
+            },
+            {
+                "command": "tailwindCrayon.inspectAtCursor",
+                "title": "Inspect Class at Cursor",
+                "category": "Tailwind Crayon"
+            }
+        ]
+    },
+    "scripts": {
+        "build": "tsup",
+        "watch": "tsup --watch",
+        "typecheck": "tsc --noEmit -p ./",
+        "package": "npx @vscode/vsce package",
+        "publish": "npx @vscode/vsce publish"
+    },
+    "devDependencies": {
+        "@resvg/resvg-js": "^2.6.2",
+        "@types/node": "^22.19.17",
+        "@types/vscode": "^1.109.0",
+        "tsup": "^8.5.1",
+        "typescript": "^5.9.3"
+    }
+}

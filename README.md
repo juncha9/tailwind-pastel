@@ -1,20 +1,20 @@
 # Tailwind Crayon
 
-[![VS Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/alkemic-studio.tailwind-crayon?color=007ACC&logo=visual-studio-code&label=marketplace)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayon)
-[![VS Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/alkemic-studio.tailwind-crayon?color=informational&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayon)
-[![VS Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/alkemic-studio.tailwind-crayon?color=orange&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayon&ssr=false#review-details)
-[![GitHub stars](https://img.shields.io/github/stars/juncha9/tailwind-crayon?color=f5d90a&logo=github)](https://github.com/juncha9/tailwind-crayon/stargazers)
-[![last commit](https://img.shields.io/github/last-commit/juncha9/tailwind-crayon?color=blueviolet&logo=github)](https://github.com/juncha9/tailwind-crayon/commits/main)
-[![license](https://img.shields.io/github/license/juncha9/tailwind-crayon?color=green)](./LICENSE.md)
+[![VS Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/alkemic-studio.tailwind-crayons?color=007ACC&logo=visual-studio-code&label=marketplace)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayons)
+[![VS Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/alkemic-studio.tailwind-crayons?color=informational&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayons)
+[![VS Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/alkemic-studio.tailwind-crayons?color=orange&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=alkemic-studio.tailwind-crayons&ssr=false#review-details)
+[![GitHub stars](https://img.shields.io/github/stars/juncha9/tailwind-crayons?color=f5d90a&logo=github)](https://github.com/juncha9/tailwind-crayons/stargazers)
+[![last commit](https://img.shields.io/github/last-commit/juncha9/tailwind-crayons?color=blueviolet&logo=github)](https://github.com/juncha9/tailwind-crayons/commits/main)
+[![license](https://img.shields.io/github/license/juncha9/tailwind-crayons?color=green)](./LICENSE.md)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-ea4aaa?logo=github-sponsors)](https://github.com/sponsors/juncha9)
 
-![Usage](https://raw.githubusercontent.com/juncha9/tailwind-crayon/main/docs/imgs/main.png)
+![Usage](https://raw.githubusercontent.com/juncha9/tailwind-crayons/main/docs/imgs/main.png)
 
 Tailwind gives you the wall of utilities. Crayon helps you read it — every class tinted by category, so layout, box, surface, and typography sort themselves out before your eyes do.
 
 So `flex items-center gap-4 px-3 py-2 bg-white rounded-lg shadow text-sm font-medium hover:bg-gray-50` stops reading like noise — each utility is painted in its category's hue, and your eyes group them automatically.
 
-![Usage](https://raw.githubusercontent.com/juncha9/tailwind-crayon/main/docs/imgs/example.png)
+![Usage](https://raw.githubusercontent.com/juncha9/tailwind-crayons/main/docs/imgs/example.png)
 
 ## Features
 

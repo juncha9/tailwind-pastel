@@ -1,5 +1,5 @@
 {
-    "name": "tailwind-crayon",
+    "name": "tailwind-crayons",
     "displayName": "Tailwind Crayon",
     "description": "Highlights Tailwind utility classes by category with distinct colors for visual scanning",
     "version": "0.0.1",
@@ -8,12 +8,12 @@
     "icon": "icon.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/alkemic-studio/tailwind-crayon.git"
+        "url": "https://github.com/alkemic-studio/tailwind-crayons.git"
     },
     "bugs": {
-        "url": "https://github.com/alkemic-studio/tailwind-crayon/issues"
+        "url": "https://github.com/alkemic-studio/tailwind-crayons/issues"
     },
-    "homepage": "https://github.com/alkemic-studio/tailwind-crayon#readme",
+    "homepage": "https://github.com/alkemic-studio/tailwind-crayons#readme",
     "galleryBanner": {
         "color": "#1e293b",
         "theme": "dark"

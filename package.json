@@ -2,7 +2,7 @@
     "name": "tailwind-pastel",
     "displayName": "Tailwind Pastel",
     "description": "Highlights Tailwind utility classes by category with distinct colors for visual scanning",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "alkemic-studio",
     "license": "MIT",
     "icon": "icon.png",
@@ -57,11 +57,6 @@
             {
                 "command": "tailwindPastel.toggle",
                 "title": "Toggle Highlighting",
-                "category": "Tailwind Pastel"
-            },
-            {
-                "command": "tailwindPastel.inspectAtCursor",
-                "title": "Inspect Class at Cursor",
                 "category": "Tailwind Pastel"
             }
         ]

@@ -11,20 +11,6 @@ import { ClassToken, TextFragment, TailwindCategory } from '@/_types';
 const CLASSNAME_HELPER_SET: ReadonlySet<string> = new Set(CLASSNAME_HELPERS);
 
 // ---------------------------------------------------------------------------
-// color
-// ---------------------------------------------------------------------------
-
-// rgb(r,g,b) 색상에 alpha를 입혀 rgba 문자열로 반환한다. 파싱 실패 시 원래 색을 그대로 사용한다.
-export function withAlpha(color: string, alpha: number): string {
-    const match = /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)(?:\s*,\s*[\d.]+)?\s*\)$/.exec(color);
-    if (match == null) {
-        return color;
-    }
-    const [, r, g, b] = match;
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}
-
-// ---------------------------------------------------------------------------
 // tailwind classification
 // ---------------------------------------------------------------------------
 

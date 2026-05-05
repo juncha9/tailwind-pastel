@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { CATEGORY_STYLE_MAP, SUPPORTED_LANGUAGES } from '../_defs';
 import { SourceLanguage } from '../_types';
-import { buildLineStarts, extractClassTokens } from '../_libs';
+import { buildLineStarts } from '../_libs';
 import { DecorationRegistry } from './decoration-registry';
 import { TokenStore } from './token-store';
 import { RefreshScheduler } from './refresh-scheduler';
@@ -60,12 +60,23 @@ export class HighlightManager implements vscode.Disposable {
                 this.refreshAll();
             }),
             vscode.commands.registerCommand(`${CONFIG_NAMESPACE}.toggle`, () => this.toggleEnabled()),
-            vscode.commands.registerCommand(
-                `${CONFIG_NAMESPACE}.inspectAtCursor`,
-                () => this.inspectAtCursor()
-            ),
             this
         );
+
+        /*
+         * 디버그(Extension Development Host) 실행에서만 토큰 카테고리를 hover로 노출.
+         * 프로덕션 사용자에겐 잡음이 되므로 등록 자체를 건다.
+         */
+        if (context.extensionMode === vscode.ExtensionMode.Development) {
+            for (const language of SUPPORTED_LANGUAGES) {
+                context.subscriptions.push(
+                    vscode.languages.registerHoverProvider(
+                        { language, scheme: 'file' },
+                        { provideHover: (doc, pos) => this.provideDebugHover(doc, pos) }
+                    )
+                );
+            }
+        }
 
         this.refreshAll();
     }
@@ -117,23 +128,37 @@ export class HighlightManager implements vscode.Disposable {
         );
     }
 
-    /** 디버그/검증용: 커서 위치 토큰 카테고리를 status 메시지로 표시. */
-    private inspectAtCursor(): void {
-        const editor = vscode.window.activeTextEditor;
-        if (editor == null) {
-            return;
+    /*
+     * 디버그/검증용 hover. Extension Development Host에서만 등록되며,
+     * 호버 위치의 토큰을 TokenStore 캐시에서 찾아 카테고리/anchor 정보를 보여준다.
+     */
+    private provideDebugHover(
+        document: vscode.TextDocument,
+        position: vscode.Position
+    ): vscode.Hover | null {
+        const language = document.languageId as SourceLanguage;
+        if (SUPPORTED_LANGUAGES.has(language) === false) {
+            return null;
         }
-        const offset = editor.document.offsetAt(editor.selection.active);
-        const tokens = extractClassTokens(editor.document.getText());
+        if (isEnabled() === false) {
+            return null;
+        }
+        const offset = document.offsetAt(position);
+        const tokens = this.tokenStore.getOrExtract(document, document.getText(), undefined);
         const hit = tokens.find(t => t.start <= offset && offset <= t.end);
         if (hit == null) {
-            vscode.window.setStatusBarMessage('Tailwind Pastel: no token at cursor', 2000);
-            return;
+            return null;
         }
         const label = CATEGORY_STYLE_MAP.get(hit.category)?.label ?? hit.category;
-        vscode.window.setStatusBarMessage(
-            `Tailwind Pastel: "${hit.raw}" → ${label}`,
-            3000
+        const md = new vscode.MarkdownString();
+        md.appendMarkdown(`**Tailwind Pastel** · \`${hit.raw}\`\n\n`);
+        md.appendMarkdown(`- category: \`${hit.category}\` (${label})\n`);
+        md.appendMarkdown(`- token offset: \`${hit.start}\`–\`${hit.end}\`\n`);
+        md.appendMarkdown(`- anchor offset: \`${hit.anchorStart}\`–\`${hit.anchorEnd}\``);
+        const range = new vscode.Range(
+            document.positionAt(hit.start),
+            document.positionAt(hit.end)
         );
+        return new vscode.Hover(md, range);
     }
 }

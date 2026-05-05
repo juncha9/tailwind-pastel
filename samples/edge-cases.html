@@ -1,0 +1,45 @@
+<!doctype html>
+<!--
+    까다로운 케이스. 각 div 의 주석에 "이렇게 보여야 한다"가 적혀 있다.
+-->
+<html>
+<body>
+    <!-- (1) 빈 class — 토큰 0개 -->
+    <div class=""></div>
+
+    <!-- (2) 따옴표 두 종류 -->
+    <div class='flex p-4 bg-amber-100'></div>
+    <div class="flex p-4 bg-amber-100"></div>
+
+    <!-- (3) 공백만 -->
+    <div class="   "></div>
+
+    <!-- (4) 공백/탭/개행 혼재 — 한 줄로 합쳐 토큰화 되어야 -->
+    <div class="
+        flex
+        items-center
+        gap-4
+        px-3 py-2
+    "></div>
+
+    <!-- (5) trailing/leading 공백 -->
+    <div class="  flex  p-4  "></div>
+
+    <!-- (6) Angular [class] / ngClass / class:list (Astro) — 패턴 매칭 -->
+    <div [class]="'flex p-4'"></div>
+    <div ngClass="flex p-4"></div>
+    <div class:list={['flex', 'p-4', cond && 'bg-red-500']}></div>
+
+    <!-- (7) Vue :class -->
+    <div :class="'flex p-4'"></div>
+
+    <!-- (8) 식별자 안의 점 표기 — 함수 매칭에서 lib.cn 도 잡혀야 (TSX 영역의 일이지만 패턴 검증용) -->
+    <span title="lib.cn('flex p-4')"></span>
+
+    <!-- (9) 연속된 공백 / 탭만 있는 토큰 -->
+    <div class="flex 	 	 p-4"></div>
+
+    <!-- (10) 매우 긴 클래스 줄 — perf 회귀 감지용 -->
+    <div class="relative flex flex-col items-stretch justify-between gap-4 px-6 py-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 text-sm leading-6 text-gray-700 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 md:flex-row md:items-center md:gap-6 md:px-8 md:py-5 lg:gap-8 lg:px-10 cursor-pointer select-none"></div>
+</body>
+</html>

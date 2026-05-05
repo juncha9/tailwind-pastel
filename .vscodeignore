@@ -25,3 +25,4 @@ src/**
 *.vsix
 
 [Dd]ocs/
+[Ss]amples/

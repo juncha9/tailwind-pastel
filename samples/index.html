@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>Tailwind Pastel — basic HTML sample</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900 antialiased">
+    <!-- 6개 카테고리가 한 줄에 모두 등장 -->
+    <header class="sticky top-0 z-50 flex items-center justify-between gap-4 px-6 py-3 bg-white border-b border-gray-200 shadow-sm transition-shadow duration-200 hover:shadow">
+        <a class="inline-flex items-center gap-2 font-extrabold tracking-tight text-gray-900 no-underline">
+            <span class="block w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            Brand
+        </a>
+        <nav class="flex gap-3 text-sm">
+            <a class="px-2.5 py-1.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150 cursor-pointer">Home</a>
+            <a class="px-2.5 py-1.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150 cursor-pointer">Docs</a>
+            <a class="px-2.5 py-1.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150 cursor-pointer">Blog</a>
+        </nav>
+    </header>
+
+    <!-- box / sizing — w/h, min/max, padding/margin, gap -->
+    <section class="w-full max-w-screen-xl min-h-80 px-6 py-8 mx-auto">
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Pastel highlights utilities</h1>
+        <p class="text-base leading-relaxed text-gray-600 max-w-prose">
+            Each utility is tinted by category — <em class="italic text-blue-600">layout</em>, box,
+            typography, surface, motion, and other.
+        </p>
+    </section>
+
+    <!-- surface / motion — gradient, shadow, ring, transform, animate -->
+    <section class="relative px-6 py-12 bg-gradient-to-br from-amber-100 via-pink-100 to-blue-100 rounded-3xl shadow-xl overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-52 h-52 bg-violet-400 rounded-full opacity-60 blur-3xl rotate-12 transition-transform duration-500"></div>
+        <button class="inline-flex items-center gap-2 px-4 py-2.5 bg-gray-900 text-white border-0 rounded-full font-semibold cursor-pointer transition-all duration-150 hover:bg-gray-800 hover:scale-105 active:scale-95">
+            Get started
+        </button>
+    </section>
+
+    <!-- card grid — typography + surface 혼합 -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
+        <article class="flex flex-col gap-2 p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h2 class="text-lg font-semibold text-gray-900">Card 1</h2>
+            <p class="text-sm text-gray-500 leading-6">Some descriptive text that wraps to multiple lines.</p>
+        </article>
+        <article class="flex flex-col gap-2 p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h2 class="text-lg font-semibold text-gray-900">Card 2</h2>
+            <p class="text-sm text-gray-500 leading-6">Another card with similar styling.</p>
+        </article>
+        <article class="flex flex-col gap-2 p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h2 class="text-lg font-semibold text-gray-900">Card 3</h2>
+            <p class="text-sm text-gray-500 leading-6">A third one to fill the row.</p>
+        </article>
+    </section>
+
+    <footer class="mt-12 px-6 py-4 bg-gray-900 text-gray-300 text-xs text-center select-none">
+        Categories should sort themselves out before your eyes do.
+    </footer>
+</body>
+</html>

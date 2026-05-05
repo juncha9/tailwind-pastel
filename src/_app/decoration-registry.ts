@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { ARBITRARY_VALUE_COLOR, CATEGORY_STYLES, CSS_VARIABLE_COLOR } from '../_defs';
 import { CategoryStyle, ClassToken, TailwindCategory } from '../_types';
-import { rangeFromOffsets, withAlpha } from '../_libs';
+import { rangeFromOffsets } from '../_libs';
 
 /*
  * 토큰 raw 안에서 `--<id>` 위치를 찾는 패턴.
@@ -13,7 +13,7 @@ const CSS_VARIABLE_PATTERN = /--[A-Za-z_][\w-]*/g;
 /*
  * arbitrary value의 대괄호 안쪽 본문을 잡는 패턴.
  *  - `[12px]`, `[#fff]`, `[font:inherit]`, `[url(/x.png)]` 등의 `[...]`
- *  - capture group 1이 안쪽 본문 (대괄호 자체는 제외 — 카테고리 underline/색을 그대로 둠)
+ *  - capture group 1이 안쪽 본문 (대괄호 자체는 제외 — 카테고리 색을 그대로 둠)
  *  - `[]` 빈 케이스는 의미 없으므로 `+`로 1자 이상 매칭
  */
 const ARBITRARY_VALUE_PATTERN = /\[([^\]]+)\]/g;
@@ -23,14 +23,6 @@ function buildAnchorDecoration(style: CategoryStyle): vscode.TextEditorDecoratio
     return vscode.window.createTextEditorDecorationType({
         color: style.color,
         fontWeight: '600',
-    });
-}
-
-// full 구간 — 클래스 전체 길이에 카테고리 색 언더라인. 글자색은 건드리지 않음.
-function buildFullDecoration(style: CategoryStyle): vscode.TextEditorDecorationType {
-    const lineColor = withAlpha(style.color, 0.8);
-    return vscode.window.createTextEditorDecorationType({
-        textDecoration: `underline ${lineColor}; text-underline-offset: 3px; text-decoration-thickness: 1px;`,
     });
 }
 
@@ -61,13 +53,12 @@ function buildArbitraryValueDecoration(): vscode.TextEditorDecorationType {
 
 /*
  * 데코레이션 인스턴스의 소유자.
- *  - 4종 데코레이션(anchor / full / variant / cssVariable) 생성·해제·적용을 한 곳에서 담당.
+ *  - 4종 데코레이션(anchor / variant / cssVariable / arbitraryValue) 생성·해제·적용을 한 곳에서 담당.
  *  - apply()는 토큰 목록에서 카테고리별 range bucket을 빌드해 setDecorations로 발행한다.
  *  - reinit()은 config 변경 시 색·스타일을 갱신하기 위해 dispose → init을 한 번에 처리.
  */
 export class DecorationRegistry implements vscode.Disposable {
     private readonly anchor = new Map<TailwindCategory, vscode.TextEditorDecorationType>();
-    private readonly full = new Map<TailwindCategory, vscode.TextEditorDecorationType>();
     private readonly variant = new Map<TailwindCategory, vscode.TextEditorDecorationType>();
     private cssVariable: vscode.TextEditorDecorationType | undefined;
     private arbitraryValue: vscode.TextEditorDecorationType | undefined;
@@ -84,12 +75,10 @@ export class DecorationRegistry implements vscode.Disposable {
 
     dispose(): void {
         for (const d of this.anchor.values()) d.dispose();
-        for (const d of this.full.values()) d.dispose();
         for (const d of this.variant.values()) d.dispose();
         this.cssVariable?.dispose();
         this.arbitraryValue?.dispose();
         this.anchor.clear();
-        this.full.clear();
         this.variant.clear();
         this.cssVariable = undefined;
         this.arbitraryValue = undefined;
@@ -98,7 +87,6 @@ export class DecorationRegistry implements vscode.Disposable {
     /** 한 에디터의 모든 하이라이트를 비운다 (toggle off 시 사용). */
     clear(editor: vscode.TextEditor): void {
         for (const d of this.anchor.values()) editor.setDecorations(d, []);
-        for (const d of this.full.values()) editor.setDecorations(d, []);
         for (const d of this.variant.values()) editor.setDecorations(d, []);
         if (this.cssVariable != null) {
             editor.setDecorations(this.cssVariable, []);
@@ -111,7 +99,6 @@ export class DecorationRegistry implements vscode.Disposable {
     /** 토큰을 카테고리별 bucket으로 모아 setDecorations로 적용한다. */
     apply(editor: vscode.TextEditor, tokens: readonly ClassToken[], lineStarts: number[]): void {
         const anchorBuckets = this.makeBuckets();
-        const fullBuckets = this.makeBuckets();
         const variantBuckets = this.makeBuckets();
         const cssVariableRanges: vscode.Range[] = [];
         const arbitraryValueRanges: vscode.Range[] = [];
@@ -119,9 +106,6 @@ export class DecorationRegistry implements vscode.Disposable {
         for (const token of tokens) {
             anchorBuckets.get(token.category)?.push(
                 rangeFromOffsets(lineStarts, token.anchorStart, token.anchorEnd)
-            );
-            fullBuckets.get(token.category)?.push(
-                rangeFromOffsets(lineStarts, token.start, token.end)
             );
             // [token.start, token.anchorStart) — variant prefix / `!` / 음수 `-` 구간.
             // 비어있지 않을 때(즉, 실제 modifier가 붙은 토큰)만 누적.
@@ -156,7 +140,6 @@ export class DecorationRegistry implements vscode.Disposable {
         }
 
         this.applyBucketed(editor, anchorBuckets, this.anchor);
-        this.applyBucketed(editor, fullBuckets, this.full);
         this.applyBucketed(editor, variantBuckets, this.variant);
         if (this.cssVariable != null) {
             editor.setDecorations(this.cssVariable, cssVariableRanges);
@@ -169,7 +152,6 @@ export class DecorationRegistry implements vscode.Disposable {
     private init(): void {
         for (const style of CATEGORY_STYLES) {
             this.anchor.set(style.category, buildAnchorDecoration(style));
-            this.full.set(style.category, buildFullDecoration(style));
             this.variant.set(style.category, buildVariantDecoration(style));
         }
         this.cssVariable = buildCssVariableDecoration();

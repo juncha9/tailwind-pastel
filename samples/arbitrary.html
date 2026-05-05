@@ -1,0 +1,32 @@
+<!doctype html>
+<!--
+    Arbitrary value 검증 — `[12px]`, `[#fff]`, `[font:inherit]`, `var(--xxx)` 안쪽 본문이
+    "값/변수" 톤(stone-300)으로 칠해져야 한다. 대괄호 안 공백/콜론/콤마는 토큰을 끊지 않음.
+-->
+<html>
+<body>
+    <!-- (1) sizing — calc / clamp / 분수 / 백분율 -->
+    <div class="w-[calc(100%-2rem)] h-[clamp(200px,50vh,600px)] min-w-[20rem] max-w-[90ch]"></div>
+
+    <!-- (2) color — hex / rgb / rgba / hsl / current -->
+    <div class="bg-[#1a1a1a] text-[rgb(0,0,0)] border-[rgba(0,0,0,0.5)] ring-[hsl(220,90%,50%)] caret-[currentColor]"></div>
+
+    <!-- (3) gradient stops + arbitrary positions -->
+    <div class="bg-gradient-to-br from-[#fef3c7] via-[#fce7f3_60%] to-[#dbeafe]"></div>
+
+    <!-- (4) grid / flex 안의 콜론·언더스코어 -->
+    <div class="grid-cols-[200px_minmax(0,1fr)_auto] grid-rows-[repeat(3,minmax(0,1fr))] gap-[12px_24px]"></div>
+
+    <!-- (5) font / leading / tracking — 콜론과 공백 포함 -->
+    <div class="font-[Inter,system-ui,sans-serif] leading-[1.6] tracking-[-0.02em] text-[14px]"></div>
+
+    <!-- (6) CSS 변수 참조 — `--brand` 가 cssVariable 색(slate-300)으로 강조 -->
+    <div class="bg-[var(--brand)] text-[var(--fg)] border-[var(--ring)] shadow-[0_4px_12px_var(--shadow)]"></div>
+
+    <!-- (7) arbitrary property — `[mask-image:...]` 같은 임의 속성 -->
+    <div class="[mask-image:linear-gradient(180deg,black,transparent)] [-webkit-mask-image:linear-gradient(180deg,black,transparent)]"></div>
+
+    <!-- (8) 변형 + arbitrary 중첩 -->
+    <div class="hover:bg-[var(--brand)]/80 md:!w-[calc(100%-2rem)] dark:text-[#e5e7eb]"></div>
+</body>
+</html>

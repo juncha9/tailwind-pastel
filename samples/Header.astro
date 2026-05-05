@@ -1,0 +1,37 @@
+---
+const links = [
+    { href: '/', label: 'Home' },
+    { href: '/docs', label: 'Docs' },
+    { href: '/blog', label: 'Blog' },
+];
+---
+
+<!--
+    Astro: HTML 과 동일한 class="..." 형식.
+    Astro 고유 class:list={[...]} 도 기본 attribute pattern 으로 매칭됨.
+-->
+<header class="sticky top-0 z-50 flex items-center justify-between gap-4 px-6 py-3 bg-white border-b border-gray-200 backdrop-blur-md">
+    <a
+        href="/"
+        class="inline-flex items-center gap-2 font-extrabold tracking-tight text-gray-900 no-underline"
+    >
+        <span class="block w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+        Brand
+    </a>
+
+    <nav class="flex gap-3 text-sm">
+        {links.map((link) => (
+            <a
+                href={link.href}
+                class="px-2.5 py-1.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150"
+            >
+                {link.label}
+            </a>
+        ))}
+    </nav>
+
+    <!-- class:list — 정적 string + 조건부 array -->
+    <button class:list={['inline-flex items-center gap-2 px-3 py-1.5 rounded-md', 'bg-gray-100 text-gray-900 hover:bg-gray-200']}>
+        Menu
+    </button>
+</header>

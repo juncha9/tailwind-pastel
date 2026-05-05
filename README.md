@@ -18,7 +18,7 @@ So `flex items-center gap-4 px-3 py-2 bg-white rounded-lg shadow text-sm font-me
 
 ## Features
 
-- **Category-based coloring** — every utility's prefix is colored by category, and the entire class gets a subtle underline in the same color
+- **Category-based coloring** — every utility's prefix is colored by category
 - **Variant-aware** — `md:hover:bg-red-500` is classified by the `bg-` utility, ignoring variant prefixes, `!important`, and negative `-` markers
 - **Arbitrary values supported** — `w-[calc(100%-2rem)]` and `bg-[#1a1a1a]` are tokenized correctly even with brackets containing spaces or colons
 - **Helper-aware** — picks up class strings inside `clsx()`, `cn()`, `cva()`, `twMerge()`, tagged templates (`` cn`...` ``), and namespaced calls (`lib.cn(...)`)
@@ -68,10 +68,9 @@ Templates with `${...}` interpolation are skipped to keep position mapping accur
 
 ## Commands
 
-| Command                                  | Description                                                                                           |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `Tailwind Pastel: Toggle Highlighting`  | Flip `tailwindPastel.enabled` — writes to workspace settings if defined there, otherwise to global.   |
-| `Tailwind Pastel: Inspect Class at Cursor` | Shows the category of the token under the cursor in the status bar (debug helper).                 |
+| Command                                 | Description                                                                                         |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `Tailwind Pastel: Toggle Highlighting` | Flip `tailwindPastel.enabled` — writes to workspace settings if defined there, otherwise to global. |
 
 ## License
 

@@ -1,0 +1,39 @@
+<!doctype html>
+<!--
+    Variant prefix 검증 — `hover:`, `md:`, `dark:`, group-/peer-, !important `!`, 음수 `-`.
+    카테고리는 utility 본체로 분류되며, variant 영역은 같은 색의 weight 400으로 표시되어야 한다.
+-->
+<html>
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+    <!-- (1) responsive variant: sm: md: lg: xl: 2xl: -->
+    <div class="flex flex-col sm:flex-row md:items-center lg:gap-8 xl:px-12 2xl:max-w-screen-2xl gap-2 px-4 py-2"></div>
+
+    <!-- (2) state variant: hover focus active disabled -->
+    <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 active:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"></button>
+
+    <!-- (3) dark variant -->
+    <div class="bg-white text-gray-900 border border-gray-200 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"></div>
+
+    <!-- (4) group / peer -->
+    <div class="group relative">
+        <div class="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"></div>
+    </div>
+    <label class="block">
+        <input type="checkbox" class="peer sr-only" />
+        <span class="block px-3 py-2 bg-gray-100 peer-checked:bg-green-500 peer-checked:text-white"></span>
+    </label>
+
+    <!-- (5) data-* / aria-* / has() variant -->
+    <div class="bg-gray-100 data-[state=open]:bg-blue-50 aria-selected:bg-blue-500 has-[input:checked]:ring-2"></div>
+
+    <!-- (6) !important `!` prefix -->
+    <div class="!flex !p-0 !bg-red-500 hover:!opacity-100"></div>
+
+    <!-- (7) 음수 `-` prefix -->
+    <div class="-mt-4 -mx-2 -translate-x-1/2 -translate-y-full -z-10"></div>
+
+    <!-- (8) variant 누적 — 매우 길지만 anchor는 단 하나 -->
+    <div class="md:dark:hover:!-translate-x-full md:dark:hover:!bg-amber-500/90"></div>
+</body>
+</html>

@@ -10,9 +10,7 @@
 
 ![Usage](https://raw.githubusercontent.com/juncha9/tailwind-pastel/main/docs/imgs/main.png)
 
-Tailwind gives you the wall of utilities. Pastel helps you read it — every class tinted by category, so layout, box, surface, and typography sort themselves out before your eyes do.
-
-So `flex items-center gap-4 px-3 py-2 bg-white rounded-lg shadow text-sm font-medium hover:bg-gray-50` stops reading like noise — each utility is painted in its category's hue, and your eyes group them automatically.
+Tailwind gives you the wall of utilities. Pastel helps you read it — every class tinted by one of six categories (**layout**, **box**, **typography**, **surface**, **motion**, **other**), so your eyes group them before your brain does.
 
 ![Usage](https://raw.githubusercontent.com/juncha9/tailwind-pastel/main/docs/imgs/example.png)
 
